@@ -1,0 +1,56 @@
+html {
+    font-size: 11pt;
+    height: 100%;
+}
+
+footer {
+    position: sticky;
+    bottom: 0;
+    background: pink;
+    z-index: 10;
+}
+
+.mw-100px {
+    min-width: 100px;
+}
+
+.mw-150px {
+    min-width: 150px;
+}
+
+.mw-200px {
+    min-width: 200px;
+}
+
+.mw-250px {
+    min-width: 250px;
+}
+
+.mw-300px {
+    min-width: 300px;
+}
+
+thead th {
+    text-align: center;
+    vertical-align: middle !important;
+}
+
+tbody {
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.select2-selection {
+    height: 38px !important;
+    vertical-align: middle;
+}
+
+.custom-control-label,
+.custom-control-input,
+.custom-switch {
+    cursor: pointer;
+}
+
+.select2-container--bootstrap .select2-results__option--highlighted[aria-selected] {
+    background-color: var(--blue);
+}

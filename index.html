@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css">
+    <link href="./assets/styles.css" rel="stylesheet" />
+</head>
+
+<body class="d-flex flex-column h-100">
+    <div class="flex-grow-1 py-2 mx-3">
+        <div class="py-3 d-flex">
+            <div class="d-flex">
+                <span class="py-2 font-weight-bold"
+                    title="Khách hàng trả nợ đúng hẹn trong 3 tháng đầu tiên thì Sale được thưởng 200000/loan">Thưởng
+                    rủi ro:</span>
+                <input type="text" class="form-control text-right mx-3" style="width: 150px;" value="200000"
+                    field-name="default-risk-bonus">
+            </div>
+            <div class="d-flex flex-column">
+                <div class="d-flex">
+                    <div class="d-flex mx-4">
+                        <span class="py-2 font-weight-bold">ICT (FDSA1):</span>
+                        <input type="text" class="form-control text-right mx-3" readonly value="0"
+                            field-name="total-bonus-1" style="width: 150px;background: lightpink;">
+                    </div>
+                    <div class="d-flex mx-4">
+                        <span class="py-2 font-weight-bold">ICT (FDSA2):</span>
+                        <input type="text" class="form-control text-right mx-3" readonly value="0"
+                            field-name="total-bonus-2" style="width: 150px;background: lightyellow;">
+                    </div>
+                </div>
+                <div class="text-center">ICT = Thưởng năng suất + Thưởng mốc + Thưởng quản trị rủi ro</div>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-success my-3" id="btn-add">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+                <span class="px-2">Thêm hồ sơ</span>
+            </button>
+            <button class="btn btn-info my-3" id="btn-reload">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+                <span class="px-2">Làm mới</span>
+            </button>
+        </div>
+        <div class="overflow-auto">
+            <table class="table table-bordered table-hover w-auto" id="main-table">
+                <thead class="bg-light">
+                    <tr class="align-middle">
+                        <th class="mw-100px" rowspan="2"></th>
+                        <th class="mw-100px" rowspan="2">Số hồ sơ</th>
+                        <th class="mw-100px" rowspan="2">Bảo hiểm</th>
+                        <th class="mw-300px" rowspan="2">Sản phẩm</th>
+                        <th class="mw-150px" rowspan="2">Số tiền vay</th>
+                        <th class="mw-150px">Đơn giá</th>
+                        <th class="mw-150px">Hệ số sản phẩm</th>
+                        <th class="mw-150px">Hệ số ticket size</th>
+                        <th class="mw-150px">Thưởng năng suất</th>
+                        <th class="mw-300px" colspan="2">Thưởng mốc</th>
+                        <th class="mw-150px" rowspan="2">Thưởng rủi ro</th>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <th>2</th>
+                        <th>3</th>
+                        <th>4 = 1 x 2 x 3</th>
+                        <th>FDSA1</th>
+                        <th>FDSA2</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4"></td>
+                        <td>
+                            <input class="form-control text-right" type="text" data-type="number" readonly
+                                field-name="total-amount">
+                        </td>
+                        <td colspan="3"></td>
+                        <td>
+                            <input class="form-control text-right" type="text" data-type="number" readonly
+                                field-name="total-performance-bonus">
+                        </td>
+                        <td>
+                            <input class="form-control text-right" type="text" data-type="number" readonly
+                                field-name="total-level-bonus-1" style="width: 150px;background: lightpink;">
+                        </td>
+                        <td>
+                            <input class="form-control text-right" type="text" data-type="number" readonly
+                                field-name="total-level-bonus-2" style="width: 150px;background: lightyellow;">
+                        </td>
+                        <td>
+                            <input class="form-control text-right" type="text" data-type="number" readonly
+                                field-name="total-risk-bonus">
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+    <footer class="p-3">
+        <div>Copyright &copy; 2023&nbsp;<a href="https://www.facebook.com/xiaoruLyn" target="_blank"> Như Như</a></div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.8/jquery.inputmask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/vn.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="./assets/main.js"></script>
+</body>
+
+</html>
